@@ -28,4 +28,8 @@ public interface UsuarioDAO {
 
     @Query("SELECT * FROM usuario")
     List<Usuario> getAllUsuarios();
+
+    @Query("SELECT * FROM usuario WHERE email = :email AND senha = :senha LIMIT 1")
+    Usuario getUsuarioByEmailAndSenha(String email, String senha);
+
 }
