@@ -2,6 +2,7 @@ package com.example.controle_enderecos.entities;
 
 
 import androidx.room.Entity;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -17,6 +18,7 @@ public class Cidade {
         this.cidade = cidade;
         this.estado = estado;
     }
+
 
     public int getCidadeId() {
         return cidadeId;

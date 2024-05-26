@@ -14,9 +14,21 @@
         android:padding="16dp">
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listViewCidades"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnAddCidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Cidade" />
+
+        <Button
+            android:id="@+id/btnVerEnderecos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Endereços" />
 
     </LinearLayout>
 
