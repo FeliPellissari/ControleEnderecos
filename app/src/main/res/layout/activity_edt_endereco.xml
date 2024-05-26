@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".activities.EdtEnderecoActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -13,10 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome" />
+            android:text="Descrição" />
 
         <EditText
-            android:id="@+id/editTextNome"
+            android:id="@+id/editTextDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
@@ -24,30 +27,48 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email" />
+            android:text="Latitude" />
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextLatitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="numberDecimal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Senha" />
+            android:text="Longitude" />
 
         <EditText
-            android:id="@+id/editTextSenha"
+            android:id="@+id/editTextLongitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cidade" />
+
+        <Spinner
+            android:id="@+id/spinnerCidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/buttonCadastrar"
+            android:id="@+id/btnNovaCidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar" />
+            android:text="Nova Cidade" />
+
+
+        <Button
+            android:id="@+id/buttonSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

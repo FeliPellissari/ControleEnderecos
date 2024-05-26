@@ -1,5 +1,6 @@
 package com.example.controle_enderecos.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,67 +19,61 @@ import androidx.room.Room;
 import com.example.controle_enderecos.R;
 import com.example.controle_enderecos.database.AppDatabase;
 import com.example.controle_enderecos.entities.Cidade;
+import com.example.controle_enderecos.entities.Endereco;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CidadesActivity extends AppCompatActivity {
+public class EnderecoActivity extends AppCompatActivity {
+
     private ListView listView;
     private ArrayAdapter<String> adapter;
-    private List<String> listaCidades;
+    private List<String> listaEnderecos;
     private AppDatabase db;
-    private Button btnAddCidade;
-    private Button btnViewEnderecos;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_cidades);
+        setContentView(R.layout.activity_endereco);
 
-        listView = findViewById(R.id.listViewCidades);
-        Button btnAddCidade = findViewById(R.id.btnAddCidade);
-        Button btnViewEnderecos = findViewById(R.id.btnVerEnderecos);
+
+        listView = findViewById(R.id.listViewEnderecos);
+        Button btnAddEndereco = findViewById(R.id.btnAddEndereco);
+
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app_database")
                 .allowMainThreadQueries().build();
 
-        List<Cidade> cidades = db.cidadeDao().getAllCidades();
+        List<Endereco> enderecos = db.enderecoDao().getAllEnderecos();
 
-        listaCidades = new ArrayList<>();
-        for (Cidade cidade : cidades) {
-            listaCidades.add(cidade.getCidade());
+        listaEnderecos = new ArrayList<>();
+        for (Endereco endereco : enderecos) {
+            listaEnderecos.add(endereco.getDescricao());
         }
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaCidades);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaEnderecos);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Abre edição de cidade
-                Intent intent = new Intent(CidadesActivity.this, EdtCidadeActivity.class);
-                intent.putExtra("cidadeId", cidades.get(position).getCidadeId());
+                Intent intent = new Intent(EnderecoActivity.this, EdtEnderecoActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnAddCidade.setOnClickListener(new View.OnClickListener() {
+        btnAddEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Abre adição de cidade
-                startActivity(new Intent(CidadesActivity.this, EdtCidadeActivity.class));
+
+                startActivity(new Intent(EnderecoActivity.this, EdtEnderecoActivity.class));
             }
         });
 
-        btnViewEnderecos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Abre a lista de enderecos
-                startActivity(new Intent(CidadesActivity.this, EnderecoActivity.class));
-            }
-        });
+
 
     }
 }
